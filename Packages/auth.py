@@ -18,6 +18,8 @@ def OAuthCall(SCOPES):
   code = input('\nEnter the authorization code: ')
 
   #decode percent-encoded sequences into Unicode characters
+  #May not be necessary depending on the code returned.
+  #I suggest not removing this unless it's certain that the auth code is not % encoded.
   flow.fetch_token(code=unquote(code)) 
   
   creds = flow.credentials
