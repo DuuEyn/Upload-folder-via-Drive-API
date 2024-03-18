@@ -9,7 +9,7 @@ def OAuthCall(SCOPES):
   #Ensure that the redirect_uri matches the one on client_secret.json
   #If it does not, then the auth_url will return a redirect_uri mismatch error when accessed
   flow = Flow.from_client_secrets_file(
-      'Packages/client_secret.json',
+      'Authentication/client_secret.json',
       scopes=SCOPES,
     redirect_uri='https://OMDSPythonRepl.iddiche.repl.co')
   auth_url, _ = flow.authorization_url(prompt='consent')
