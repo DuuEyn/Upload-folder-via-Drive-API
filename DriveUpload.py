@@ -1,3 +1,5 @@
+import os
+
 from Authentication.auth import OAuthCall
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
@@ -6,38 +8,47 @@ SCOPES = ["https://www.googleapis.com/auth/drive.file"]
 
 def upload_file():
   service = build("drive", "v3", credentials=OAuthCall(SCOPES))
-  file_path = "File-path-including-filename"
-  #Splits the filename from the filepath
-  file_name = file_path.split("/")[-1]
 
-  #Creates the file metadata for upload.
-  #Google Drive attempts to automatically detect a valid mimeType for the uploaded file, if no value is provided.
-  #Add a "mimeType" keya-value pair inside file_metadata if needed
-  file_metadata = {
-      "name": file_name,
-      "parents": ["parent-folder-id"],
+  #Path of the folder where the files to be uploaded are located.
+  folder_path = "folder-path"
+
+  #Gets the name of the folder.
+  folder_name = os.path.basename(folder_path)
+
+  #Creates the folder metadata that will be passed through the API call.
+  folder_metadata = {
+    "name": folder_name,
+    "mimeType": "application/vnd.google-apps.folder",
   }
 
-  try:
-      print(f"Uploading the file {file_name}")
-      media = MediaFileUpload(file_path, resumable=True)
+  #Creates a folder in Google Drive with the same name as the source.
+  folder = service.files().create(
+    body = folder_metadata,
+    fields = "id",
+  ).execute()
 
-      #Calls the files.create() method to upload the file to Google Drive.
-      file = (
-          service.files()
-          .create(
-              body=file_metadata,
-              media_body=media,
-          )
-          .execute()
-      )
-      print(f"{file_name} uploaded.")
-
-      #Returns the uploaded file. Can be used on another function.
-      return file
+  #Iterates through each file in source folder.
+  for file in os.listdir(folder_path):
+    file_path = os.path.join(folder_path, file)
+    #Creates the file metadata for upload.
+    file_metadata = {
+        "name": file,
+        "parents": [folder.get("id")],
+    }
     
-  except Exception as error:
-    print(f"An error occurred: {error}")
+    try:
+      print(f"\nUploading the file {file}")
+      media = MediaFileUpload(file_path, resumable=True)
+  
+      #Calls the files.create() method to upload the file to Google Drive.
+      service.files().create(
+          body=file_metadata,
+          media_body=media,
+      ).execute()
+      print(f"{file} uploaded.")
+
+    except Exception as error:
+      print(f"An error occurred: {error}")
 
 
 if __name__ == "__main__":
