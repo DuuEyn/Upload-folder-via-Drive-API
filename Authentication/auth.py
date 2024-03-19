@@ -11,7 +11,7 @@ def OAuthCall(SCOPES):
   flow = Flow.from_client_secrets_file(
       'Authentication/client_secret.json',
       scopes=SCOPES,
-    redirect_uri='https://OMDSPythonRepl.iddiche.repl.co')
+    redirect_uri='redirect_uri')
   auth_url, _ = flow.authorization_url(prompt='consent')
 
   print(f'Please go to this URL: {auth_url}')
