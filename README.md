@@ -15,17 +15,17 @@
   <p align="center">
     Uploads a folder and its contents to Google Drive via Drive API 
     <br />
-    <a href="https://github.com/DuuEyn/File_Sorterr
+    <a href="https://github.com/DuuEyn/Upload-folder-via-Drive-API
 "><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/DuuEyn/File_Sorterr
+    <a href="https://github.com/DuuEyn/Upload-folder-via-Drive-API
 ">View Repo</a>
     ·
-    <a href="https://github.com/DuuEyn/File_Sorterr
+    <a href="https://github.com/DuuEyn/Upload-folder-via-Drive-API
 /issues">Report Bug</a>
     ·
-    <a href="https://github.com/DuuEyn/File_Sorterr
+    <a href="https://github.com/DuuEyn/Upload-folder-via-Drive-API
 /issues">Request Feature</a>
   </p>
 </div>
@@ -83,7 +83,7 @@ Creates a folder in Google Drive with the same name as the source folder. The sc
 ## Getting Started
 
 ### Prerequisites
-* Enable <a href="https://console.cloud.google.com/flows/enableapi?apiid=drive.googleapis.com"><strong>Google Drive API</strong></a> in your Google Cloud project
+* Enable <a href="https://console.cloud.google.com/flows/enableapi?apiid=drive.googleapis.com"><strong>Google Drive API</strong></a> in the Google Cloud project
 * Configure the <a href="https://developers.google.com/drive/api/quickstart/python#configure_the_oauth_consent_screen"><strong>OAuth consent screen</strong></a>
 * Create a Web App OAuth credential by following these steps:
   1. Go to the <a href="https://console.developers.google.com/apis/credentials"><strong>Credentials page</strong></a> of your Google Cloud project.
@@ -91,8 +91,8 @@ Creates a folder in Google Drive with the same name as the source folder. The sc
   3. Select the <strong>Web application</strong> application type.
   4. Name your OAuth 2.0 client, set a `redirect URI` and click <strong>Create</strong>.
   5. Download the JSON file and rename it as `client_secret.json`.
- 
-* Install the Google Client library for Python:
+
+* Install the following Google Client libraries for Python:
   ```sh
   pip install --upgrade google-api-python-client google-auth-oauthlib
   ``` 
@@ -103,12 +103,9 @@ Creates a folder in Google Drive with the same name as the source folder. The sc
    ```sh
    git clone https://github.com/DuuEyn/Upload-folder-via-Drive-API
    ```
-2. Change the following paths in the script if needed
-   ```sh
-   sourcePath = 'Downloads'
-   imgPath = 'Images'
-   pdfPath = 'PDFs'
-   ```
+2. Replace the `client_secret.json` file inside the `Authentication` folder with JSON file generated for your project.
+3. Replace the `redirect_uri` in the `OAuthCall` function inside `Authentication/auth.py` with the same one inside `client_secret.json`
+4. In the `upload_file` function of `DriveUpload.py`, Specify the path of the folder that needs to be uploaded in `folder_path`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -117,7 +114,7 @@ Creates a folder in Google Drive with the same name as the source folder. The sc
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-This script can be utilized to quickly organize multiple file types into different folders. The script, by default, only looks for JPGs and PDFs.
+This script can be utilized to automate the upload of folders from the local device to Google Drive without using Google Drive for desktop or manually uploading via Drive's web interface.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -133,9 +130,9 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b feature/Feature`)
+3. Commit your Changes (`git commit -m 'Add some Feature'`)
+4. Push to the Branch (`git push origin feature/Feature`)
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -154,9 +151,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Ian Dewaine Diche  - iddiche@gmail.com
+DuuEyn - iddiche@gmail.com
 
-Project Link: [https://github.com/DuuEyn/File_Sorter](https://github.com/DuuEyn/File_Sorter)
+Project Link: [https://github.com/DuuEyn/Upload-folder-via-Drive-API](https://github.com/DuuEyn/Upload-folder-via-Drive-API)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -166,7 +163,7 @@ Project Link: [https://github.com/DuuEyn/File_Sorter](https://github.com/DuuEyn/
 ## Acknowledgments
 
 * [Othnieldrew's README template](https://github.com/othneildrew/Best-README-Template)
-* [Python's shutil module documentation](https://docs.python.org/3/library/shutil.html)
+* [Google Drive API's Python quickstart guide](https://developers.google.com/drive/api/quickstart/python)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -174,18 +171,17 @@ Project Link: [https://github.com/DuuEyn/File_Sorter](https://github.com/DuuEyn/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/DuuEyn/File_Sorter.svg?style=for-the-badge
-[contributors-url]: https://github.com/DuuEyn/File_Sorter/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/DuuEyn/File_Sorter.svg?style=for-the-badge
-[forks-url]: https://github.com/DuuEyn/File_Sorter/network/members
-[stars-shield]: https://img.shields.io/github/stars/DuuEyn/File_Sorter.svg?style=for-the-badge
-[stars-url]: https://github.com/DuuEyn/File_Sorter/stargazers
-[issues-shield]: https://img.shields.io/github/issues/DuuEyn/File_Sorter.svg?style=for-the-badge
-[issues-url]: https://github.com/DuuEyn/File_Sorter/issues
-[license-shield]: https://img.shields.io/github/license/DuuEyn/File_Sorter.svg?style=for-the-badge
-[license-url]: https://github.com/DuuEyn/File_Sorter/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/DuuEyn/Upload-folder-via-Drive-API.svg?style=for-the-badge
+[contributors-url]: https://github.com/DuuEyn/Upload-folder-via-Drive-API/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/DuuEyn/Upload-folder-via-Drive-API.svg?style=for-the-badge
+[forks-url]: https://github.com/DuuEyn/Upload-folder-via-Drive-API/network/members
+[stars-shield]: https://img.shields.io/github/stars/DuuEyn/Upload-folder-via-Drive-API.svg?style=for-the-badge
+[stars-url]: https://github.com/DuuEyn/Upload-folder-via-Drive-API/stargazers
+[issues-shield]: https://img.shields.io/github/issues/DuuEyn/Upload-folder-via-Drive-API.svg?style=for-the-badge
+[issues-url]: https://github.com/DuuEyn/Upload-folder-via-Drive-API/issues
+[license-shield]: https://img.shields.io/github/license/DuuEyn/Upload-folder-via-Drive-API.svg?style=for-the-badge
+[license-url]: https://github.com/DuuEyn/Upload-folder-via-Drive-API/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/ian-dewaine-diche-69406a2bb
-[product-screenshot]: images/screenshot.png
 [Python.org]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 [Python-url]: https://www.python.org/
