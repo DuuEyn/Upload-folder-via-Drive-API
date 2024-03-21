@@ -115,6 +115,9 @@ Creates a folder in Google Drive with the same name as the source folder. The sc
 ## Usage
 
 This script can be utilized to automate the upload of folders from the local device to Google Drive without using Google Drive for desktop or manually uploading via Drive's web interface.
+<br />
+<br />
+The authentication code can be found on the browser's address bar after authorization is granted. Usual format of the URL is `[redirect-uri]/?state=[STATE]&code=[AUTH_CODE]&scope=[SCOPE]`. The user would have to copy the `[AUTH_CODE]` and paste it on the terminal to complete the authentication process.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
